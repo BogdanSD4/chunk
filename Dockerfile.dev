@@ -1,0 +1,15 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+RUN npm install -g @rollup/rollup-linux-x64-musl
+
+COPY . .
+
+EXPOSE 81
+
+CMD ["npm", "run", "dev"]
